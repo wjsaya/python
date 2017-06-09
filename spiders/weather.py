@@ -18,7 +18,7 @@ def get_weather(url):
     wea_day = re.findall(r'.*白天.*', text)
     wea_nig =re.findall(r'.*夜间.*', text)
    
-    for i in range(0,15):
+    for i in range(0,len(date)):
         print ("日期："+str(date[i]))
         print ("温度："+str(temp[i]))
         print (str(wea_day[i]))
