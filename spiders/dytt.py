@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 def get_soup(url):
+#函数，获取url的信息并转换为soup
     try:
         html = requests.get(url, headers=firefox)
     except Exception:
@@ -14,6 +15,7 @@ def get_soup(url):
         return soup
 
 def get_page_urls(soup):
+#获取电影对应的详情页
     li = []
     for i in soup.find_all('a'):
         li.append(i.text)
@@ -25,6 +27,7 @@ def get_page_urls(soup):
         i += 4
 
 def get_link_urls(soup, url, name):
+#从电影详情页获取下载链接
     li = []
     try:
         L = soup.find_all("div", class_="dl_item")
@@ -38,6 +41,7 @@ def get_link_urls(soup, url, name):
                 name.append(l) 
 
 def get_magents(url, name):
+#从下载链接获取磁力链接
     for i in range(0,len(url)):
         print (name[i])
         with open ("./movies", 'a') as f:
@@ -52,8 +56,9 @@ def get_magents(url, name):
             f.write("------------------------------------------------------------------\n")
         
 
-def get_download_link(line):
-    soup = get_soup(line)
+def get_download_link(downloadurl):
+#获取电影下载链接
+    soup = get_soup(downloadurl)
     url = []
     name = []
     get_link_urls(soup, url, name)
