@@ -6,4 +6,3 @@ cat_img = response.read()
 
 with open ('cat_700_700.jpg', 'wb') as cat:
     cat.write(cat_img)
-
