@@ -30,3 +30,4 @@ if __name__ == '__main__':
     list_trans = translate(word)
     get=get_result(list_trans)
 
+    
