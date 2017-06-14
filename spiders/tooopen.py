@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import os
 
 
+
 def download_img(url,name):
 #此函数通过获取到的图片链接来现在图片并根据网页标题命名
     img=requests.get(url)
