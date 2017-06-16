@@ -4,16 +4,19 @@
 from PIL import Image,ImageFont,ImageDraw
 def main():
     image = Image.open('./cat.jpg')
+    #打开原图
+
     wight, hight = image.size
     text = "233"
     color = (255,0,0)
     fontsize = wight//8
     font = ImageFont.truetype("/usr/share/fonts/wps-office/arial.ttf",fontsize)
+    #设定参数
 
     draw = ImageDraw.Draw(image)
     draw.text((fontsize*6,0), text, color, font)
     image.save('./c.jpg', 'jpeg')
-
+    #保存图片
 
 if __name__ == "__main__":
     main()
