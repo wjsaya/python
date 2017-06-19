@@ -1,5 +1,5 @@
 #coding: utf-8
-#µÚ 0002 Ìâ£º½« 0001 ÌâÉú³ÉµÄ 200 ¸ö¼¤»îÂë£¨»òÕßÓÅ»İÈ¯£©±£´æµ½ MySQL ¹ØÏµĞÍÊı¾İ¿âÖĞ¡£
+#ç¬¬ 0002 é¢˜ï¼šå°† 0001 é¢˜ç”Ÿæˆçš„ 200 ä¸ªæ¿€æ´»ç ï¼ˆæˆ–è€…ä¼˜æƒ åˆ¸ï¼‰ä¿å­˜åˆ° MySQL å…³ç³»å‹æ•°æ®åº“ä¸­ã€‚
 #Auther: wjsaya
 from random import choice
 import string
@@ -7,39 +7,39 @@ import os
 
 def main():
     if os.path.exists("./activecode.code"):
-        print ("ÒÑ¾­´æÔÚactivecode.codeÎÄ¼ş£¬ÒÑ¾­É¾³ı")
+        print ("å·²ç»å­˜åœ¨activecode.codeæ–‡ä»¶ï¼Œå·²ç»åˆ é™¤")
         os.remove("./activecode.code")
         
     dict = string.ascii_letters[:]
-    #Éè¶¨×ÖµäÎª'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-    count = input("ÇëÊäÈë¼¤»îÂë¸öÊı£º")
+    #è®¾å®šå­—å…¸ä¸º'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    count = input("è¯·è¾“å…¥æ¿€æ´»ç ä¸ªæ•°ï¼š")
     if count == "":
         count = "1"
-    length = input("ÇëÊäÈë¼¤»îÂë³¤¶È£º")
+    length = input("è¯·è¾“å…¥æ¿€æ´»ç é•¿åº¦ï¼š")
     if length == "":
         length = "8"
 
     get_code(dict, length, count)
         
 def get_code(dict, length, count):
-#¸ù¾İ¸ø¶¨×Öµä£¬³¤¶ÈÀ´µÃ³ö¼¤»îÂë
+#æ ¹æ®ç»™å®šå­—å…¸ï¼Œé•¿åº¦æ¥å¾—å‡ºæ¿€æ´»ç 
     for i in range(0,int(count)):
         code = ""
-    #Í¨¹ıcountÏŞÖÆ¼¤»îÂë¸öÊı£¬Ñ­»·µ÷ÓÃchoiceÀ´¼ÆËã¼¤»îÂë
+    #é€šè¿‡counté™åˆ¶æ¿€æ´»ç ä¸ªæ•°ï¼Œå¾ªç¯è°ƒç”¨choiceæ¥è®¡ç®—æ¿€æ´»ç 
         for i in range(0,int(length)):
             code = code+str(choice(dict))
         save_to_file(code)
     
 def save_to_file(code):
-#±£´æµ½ÎÄ¼ş
+#ä¿å­˜åˆ°æ–‡ä»¶
     with open ('activecode.code', 'a') as f:
         f.write(code+'\n')
      
 def save_to_mysql(id, code):
-    host = ("ÇëÊäÈëÊı¾İ¿âÖ÷»úip£º")
-    user = ("ÇëÊäÈëÊı¾İ¿âÓÃ»§Ãû£º")
-    pass = ("ÇëÊäÈëÊı¾İ¿â¶ÔÓ¦ÓÃ»§µÄÃÜÂë£º")
-    db = ("ÇëÊäÈëÖ´ĞĞ²Ù×÷µÄÊı¾İ¿â£º")
+    host = ("è¯·è¾“å…¥æ•°æ®åº“ä¸»æœºipï¼š")
+    user = ("è¯·è¾“å…¥æ•°æ®åº“ç”¨æˆ·åï¼š")
+    pass = ("è¯·è¾“å…¥æ•°æ®åº“å¯¹åº”ç”¨æˆ·çš„å¯†ç ï¼š")
+    db = ("è¯·è¾“å…¥æ‰§è¡Œæ“ä½œçš„æ•°æ®åº“ï¼š")
     mysql = pymysql.connect(host, user, pass, db)
     cursor = mysql.cursor()
     sql = """ insert into `active` (`id`, `code`) VALUES
@@ -48,4 +48,5 @@ def save_to_mysql(id, code):
     
 if __name__ == "__main__":
     main()
+
 
