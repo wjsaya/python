@@ -5,19 +5,21 @@ import os
 
 def dir():
     if not os.path.exists("log"):
-        os.mkdir("./log")
+        #os.mkdir("./log")
         print ("log目录不存在，已创建")
     os.chdir("./log")
 
-def dective():
+def dective_words():
     print (os.getcwd())
     for file in os.walk("./"):
+        print (file)
         for i in file[2]:
+            print (i)
             f = open(i, 'r').read()
-                
+           # print (f)
 
 
 if __name__ == "__main__":
-    dir()
-    dective()
-
+    print (os.getcwd())
+    #dir()
+    #dective_words()
