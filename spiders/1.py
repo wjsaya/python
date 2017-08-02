@@ -1,29 +1,37 @@
+#!/usrbin/env python3
 #coding: utf-8
-import urllib
-import http.cookiejar
 
-url = "http://c.highpin.cn/Users/CLogin"
-postdata =urllib.parse.urlencode({    
-"Logon_Password":"sunmin",
-"Logon_PostCode":"fghc",
-"Logon_RememberMe":"false",
-"Logon_UserEmail":"sun121@qq.com"
-}).encode('utf-8')
-header = {
-"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-"Accept-Encoding":"utf-8",
-"Accept-Language":"zh-cn,zh;q=0.8,en-us;q=0.5,en;q=0.3",
-"Connection":"keep-alive",
-"Host":"c.highpin.cn",
-"Referer":"http://c.highpin.cn/",
-"User-Agent":"Mozilla/5.0 (Windows NT 6.1; WOW64; rv:32.0) Gecko/20100101 Firefox/32.0"
-}
-req = urllib.request.Request(url,postdata,header)
-##print(urllib.request.urlopen(req).read().decode('utf-8'))
+import requests
+import sys
+import io
+import re
+import os
+import time
 
-#自动记住cookie
-cj = http.cookiejar.CookieJar()
-opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
-urllib.request.install_opener(opener)# 安装opener到全局
-r = opener.open(req)
-print(r.read().decode('utf-8'))
+def get_url_list(url):
+    print (url)
+    return ['1','2','3','4','5']
+
+def get_pic(i):
+    print (i)
+    time.sleep(1)
+    return (i)
+
+def down(one, i):
+    print (one)
+    print (i)
+
+if __name__ == '__main__':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='gb18030') #改变标准输出的默认编码
+
+    url = "http://www.xxx.com"
+    page_number = input("下载多少页？")
+    url_list = get_url_list(url)
+    count = 0 
+    for i in url_list:
+        if str(count) < page_number:
+            one = get_pic(i)
+            down(one, i)
+            count += 1
+            print (i+"：已经全部下载完成")
+            

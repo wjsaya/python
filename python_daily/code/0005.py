@@ -28,3 +28,4 @@ if __name__ == "__main__":
     except Exception: 
         print (Exception)
     image_small(dir1, dir2)
+    

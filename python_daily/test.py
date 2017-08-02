@@ -1,11 +1,15 @@
-
-import os 
-#py = [x for x in os.listdir('.') if os.path.splitext(x)[1]=='.py']    #获得文件列表
-#print(py)
-
-
-a=1
-b=2
-q = [ i * b for i in range(0,6) if i==2 ]
-
-print (q)
+import easygui as g  
+import sys  
+while 1:  
+    g.msgbox("这个是MissZhou的第一个界面游戏，还不知道好用不好用")  
+    msg="你学什么呢？"  
+    title="小游戏互动"  
+    choices=["c++","c","c#"]  
+    choice=g.choicebox(msg,title,choices)  
+    g.msgbox("you choose:"+str(choice),"结果")  
+    msg="restart？"  
+    title="choose?"  
+    if g.ccbox(msg,title):  
+        pass  
+    else:  
+        sys.exit(0)  
