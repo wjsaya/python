@@ -1,19 +1,14 @@
 import requests
+import sth
 import re
-base_url ="http://www.sbkk88.com"
-q = '卷1：权力的游戏 Chapter1 序曲'
-url = "/mingzhu/waiguowenxuemingzhu/bingyuhuozhige/b1/145664.html"
+
+#url = 'http://www.720ta.com/vod-detail-id-721.html'
+#url = 'http://www.720ta.com/kan.php?from=flv&url=227152'
+url = 'http://91kan2.720down.top/225286.mp4'
 
 
-options = (r'(<p>.*</p>)')
-html = requests.get(base_url+url).content.decode("gbk")
-temp =  (re.findall(options, html))
-print (temp)
-for i in range(0,len(temp)):
-    lines = temp[i]
-    lines = lines.replace('<u>一</u>','')
-    lines = lines.replace('<p>','')
-    lines = lines.replace('</p>','\n')
-    with open('./'+q, 'a') as f:
-        f.write(lines)
+
+html = requests.get(url, stream=True, headers=head).content
+#print (re.findall(R, html))
+print (html)
 

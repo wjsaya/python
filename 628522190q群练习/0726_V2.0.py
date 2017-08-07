@@ -1,6 +1,6 @@
 #/usr/bin/env python3
 #coding: utf-8
-# version: v1.0
+# version: v2.0
 '''
 Date:2017-07-26
 题型类型：Python爬虫练习
@@ -13,15 +13,6 @@ import requests
 import sth
 
 
-def change_dir(where):
-    try:
-        os.chdir(where)
-    except:
-        os.mkdir(where)
-        os.chdir(where)
-        print("创建并切换到目录'" + where + "'完成")
-#    print ("切换目录到'"+where+"'完成")
-
 
 class analyze(object):
     def __init__(self, url):
@@ -33,18 +24,19 @@ class analyze(object):
 #        print (base_url+re.findall(self.tu_url_R, self.__url)[0])
 #        print (re.findall(self.tu_name_R, self.__url)[0])
 
-    def chapter(self):
+    def get_name_url(self):
         self.each_url_R = (r'.*href="(.*)" class="text".*')
-        self.each_name_R = (r'.*"_blank" >(.*)</a>.*')
+        self.each_name_R = (r'.*"_blank" >(.*)</a> </li>')
         each_url = base_url+re.findall(self.each_url_R, self.__url)[0]
         each_url_name = re.findall(self.each_name_R, self.__url)[0]
         return (each_url_name, each_url)
-#    def get_content(self):
+
+
+
     def get_page_url(self):
-        #print (self.__url)
+#传入单本书的页面url
         name_list = []
         url_list = []
-        #print (self.__url)
         html = requests.get(self.__url, headers=sth.get_agent_pc()).content.decode("gbk")
         self.each_name_R = (r' <li> <a href=(.*).*</a> </li>')
         each_url_name = re.findall(self.each_name_R, html)
@@ -52,33 +44,57 @@ class analyze(object):
         each_url_name = each_url_name.replace(' class="articleTitle"  target="_blank">','')
         each_url_name = each_url_name.replace('</a> </li>','')
         each_url_names = each_url_name.split('"')
-        #print (len(each_url_name))
+#一大串replace是为了转换地址,从下方的URL1转化为URL2，最终通过给定的分隔符"来切割字段，形成一个列表。
+
+#URL1：<li> <a href="/mingzhu/gudaicn/shuihuchuan/41951.html" class="articleTitle"  target="_blank">读后感——江湖好汉为何爱吃酱牛肉、不喜红烧肉之小考'
+#URL2："/mingzhu/gudaicn/shuihuchuan/41951.html"读后感——江湖好汉为何爱吃酱牛肉、不喜红烧肉之小考
         for i in range(1, len(each_url_names)):
+#循环列表，列表中的偶数位字段则为名字，奇数位字段的为url。取出之后放入两个列表。
             if (i % 2) == 0:
                 name_list.append(each_url_names[i])
             else:
                 url_list.append(each_url_names[i])
         self.download(name_list, url_list)
-        
+#调用download，提取网页上的问题并以给定的文件名保存到本地
+
     def download(self, name_list, url_list):
         for i in range(0,len(name_list)):
-            count = 0
-            time.sleep(1.5)
-
+            count_downlaod = 0
+            if (count_downlaod % 5) == 0:
+                time.sleep(1.5)
+#因为网站那边肯定有反爬机制，因此设定爬取五个页面就暂停1.5秒再继续，同时headers里的user-agent是随机抽取的，因此隐蔽性略微提高。
             base_url ="http://www.sbkk88.com"
             file_name = name_list[i]
             url = url_list[i]
             options = (r'(<p>.*</p>)')
             options2 = (r'(.*</p>)<p>')
+            options3 = (r'(.+)<br>')
+            options4 = (r'(<br>)')
             html = requests.get(base_url+url, headers=sth.get_agent_pc()).content.decode("gbk")
             temp =  (re.findall(options, html))
             print (file_name+":"+base_url+url)
 
+''' option
+<p>“渔家女孩告诉我，他们中下阶层的百姓有个更妙的比喻：国王吃席，首相”</p>
+'''
+''' options2
+诸般买卖无商旅，各样生涯不见人。殿上君王归内院，阶前文武转衙门。</p><p>
+'''
+''' options3
+　　一局输赢料不真，香销茶尽尚逡巡。<br>
+'''
+''' options4
+<br>
+'''
+
+
             if temp == []:
-            #网站里的正文有两种格式，乳沟第一种匹配失败就用第二种去匹配
+            #特别恶心人的一点，网站里面的正文有两种格式甚多种，目前找到两种，但是爬取时又有没有抓到的页面，此部分待完善。
+            #而且网站还在网页中间插入了<u>一</u>这种东西，不知道还有没有插入其他的东西，但是真的好恶心。。。
                 temp = (re.findall(options2, html))
 
             for i in range(0,len(temp)):
+                #循环遍历每一行，去除特殊字符并且用</p>来换行。
                 lines = temp[i]
                 lines = lines.replace('<u>一</u>','')
                 lines = lines.replace('<p>','')
@@ -86,41 +102,36 @@ class analyze(object):
                 file_name  = file_name.replace('\r\n', '')
                 with open('./'+file_name, 'a') as f:
                     f.write(lines)
-#
-#
 
-            
-        
 #<a href="/mingzhu/waiguowenxuemingzhu/bingyuhuozhige/b1/145664.html" class="articleTitle" target="_blank">卷1：权力的游戏 Chapter1 序曲</a>
 
 
-def get_book_list(book_url):
+def get_books_list(book_url):
 #返回列表，为当前页下包含小说的li标签
     html = requests.get(book_url, headers=sth.get_agent_pc()).content.decode('gbk')
     options = (r'<li>.*class="ablum".*</li>')
-    return re.findall(options, html)
-
-def get_chapters(list):
-    name_list = []
+    each_book_list = re.findall(options, html)
+    name_list1 = []
     url_list = []
-    for url in list:
-        #print (url)
-        this = analyze(url)
-        #this.tu()
-        name_list.append(this.chapter()[0])
-        url_list.append(this.chapter()[1])
-    return (name_list, url_list)
+    #print (each_book_list)
+    for url in each_book_list:
+        TEMP_chapter = analyze(url)
+        #初始化TEMP_chapter对象，然后通过调用类里面的get_name_url方法来获取每本书的名字和链接，然后分别追加到各自列表
+        name_list1.append(TEMP_chapter.get_name_url()[0])
+        url_list.append(TEMP_chapter.get_name_url()[1])
+    return (name_list1, url_list)
 
-def download(chapters):
-    names = chapters[0]
-    urls = chapters[1]
+def download(books_list):
+#传入两个列表，一个为分部的名字，一个为分部的链接，然后创建文件夹和文件，最终调用类里面的get_page_url方法来获取书本里的每章。
+    names = books_list[0]
+    urls = books_list[1]
     for count in range(0, len(names)):
-        change_dir('./小说下载')
-        change_dir(names[count])
-        pic = analyze(urls[count])
-        pic.get_page_url()
-        change_dir('../../')
-    
+        sth.change_dir('./小说下载')
+        sth.change_dir(names[count])
+        chapter = analyze(urls[count])
+        chapter.get_page_url()
+        sth.change_dir('../../')
+
 
 
 if __name__ == '__main__':
@@ -128,6 +139,9 @@ if __name__ == '__main__':
     #books_url = 'http://www.sbkk88.com/mingzhu/waiguowenxuemingzhu/bingyuhuozhige/'
     books_url = 'http://www.sbkk88.com/mingzhu/gudaicn/sidamingzhu/'
     #udge = input("下载地址是的是合辑页？还是单本页？")
-    book_list = get_book_list(books_url)
-    chapters = get_chapters(book_list)
-    download(chapters)
+    print (books_url)
+    books_list = get_books_list(books_url)
+    #books_list为解析出的书本合辑中每本书的名字和url列表，内部包含XXX第一部，XXX第二部，XXX第三部这种。
+    download(books_list)
+    #调用下载
+
