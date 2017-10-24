@@ -1,10 +1,12 @@
-#!/usrbin/env python3
+#!/usr/bin/env python3
 # coding: utf-8
 # version: v1.0
+# 添加多进程下载
 
 import requests
 import re
 import os
+from multiprocessing import Pool
 
 def get_url_list(url):
     # 传入all页面的url，获取其他的所有文章链接，如下：
@@ -39,29 +41,41 @@ def change_dir(where):
         print("创建并切换到目录'" + where + "'完成")
 #    print ("切换目录到'"+where+"'完成")
 
-
+    
 def down(pics, url):
     # 传入一个包含图片的页面url，获取里面的图片地址并下载到本地，如下：
     #<img src="http://i.meizitu.net/2017/07/30a01.jpg" alt="**************">
     title = pics[0]
     max_page = pics[1]
     R = (r'<img src="(.*)" alt=".*>')
+    origon_dir = os.getcwd()+"\\"
     change_dir('./mzitu')
+    print (os.getcwd())
+    current_dir = os.getcwd()+"\\"
+
     try:
-        os.chdir("./" + title)
+        os.chdir(current_dir + title)
         print("'" + title + "'已下载，跳过")
-        change_dir("../../")
     except:
-        change_dir("./" + title)
+        change_dir(current_dir + title)
         for i in range(0, int(max_page)):
             page = url + "/" + str(i + 1)
             html = requests.get(page, headers=head).text
             img_url = re.findall(R, html)[0]
-            pic = requests.get(img_url, headers=head)
-            with open(str(i) + '.jpg', 'wb') as f:
-                for p in pic:
-                    f.write(p)
-        change_dir("../../")
+            Multi = Pool(8)
+            Multi.apply_async(download, args=(img_url, i, head, current_dir + title + "\\"))
+            #change_dir("../")
+            Multi.close()
+            Multi.join()
+            change_dir(origon_dir)
+
+def download(img_url, i, head, current_dir):
+        print (img_url+"已下载")
+        pic = requests.get(img_url, headers=head)
+        #print (pic)
+        with open(current_dir + str(i) + '.jpg', 'wb') as f:
+            for p in pic:
+                f.write(p)
 
 
 
@@ -72,14 +86,18 @@ if __name__ == "__main__":
     url = 'http://www.mzitu.com/all'
     page_number = input("下载多少页？")
     #page_number = "2"
-    print("#" + page_number + "#")
+    #print("#" + page_number + "#")
     url_list = get_url_list(url)
     count = 0
+ #   Multi = Pool(4)
     for i in url_list:
         if str(count) < page_number:
             pics = get_pic(i)
             down(pics, i)
+      #      Multi.apply(down, args=(pics, i,))
             count += 1
             print(i + "：已经全部下载完成")
 
+  #  Multi.close()
+   # Multi.join()
 
