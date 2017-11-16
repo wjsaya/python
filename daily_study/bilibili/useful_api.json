@@ -1,0 +1,506 @@
+#所有api的callback都是做标记用的
+callback
+
+#up主信息
+# https://api.bilibili.com/cardrich?&callback=jQuery17209020020703873045_1510838710587&mid=592761&type=jsonp&_=1510838711344
+# https://api.bilibili.com/cardrich?mid=592761'
+# https://api.bilibili.com/cardrich?mid=up主的id':
+jQuery17209020020703873045_1510838710587({
+    "code": 0,
+    "data": {
+        "card": {
+            "mid": "592761",
+            "name": "\u53ef\u6a02C",
+            "approve": true,
+            "sex": "\u4fdd\u5bc6",
+            "rank": "10000",
+            "face": "http:\/\/i0.hdslb.com\/bfs\/face\/0aec19109c04808e28222d18cd3aa7bf3c919629.jpg",
+            "DisplayRank": "10000",
+            "regtime": 1349156644,
+            "spacesta": 0,
+            "birthday": "1997-03-14",
+            "place": "\u5317\u4eac\u5e02 \u6d77\u6dc0\u533a",
+            "description": "2015\u590f\u591c\u9b3c\u755c\u5927\u8d4f\u7b2c\u4e09\u540d",
+            "article": 0,
+            "attentions": [
+                398510,
+                1473830,
+                1770706,
+                597396,
+                17492470,
+                2949989,
+                808171,
+                391679,
+                375375,
+                322892,
+                14292748,
+                922579,
+                885813,
+                6184853,
+                2467568,
+                6171645,
+                609687,
+                2402225,
+                2853209,
+                433351,
+                648411,
+                636071,
+                356433,
+                730104,
+                122879,
+                7714
+            ],
+            "fans": 178247,
+            "friend": 26,
+            "attention": 26,
+            "sign": "\u81ea\u5e26\u9b3c\u755c,\u7279\u957f\u6d17\u80c3,\u7231\u597d\u88c5\u903c.\u5fae\u535ahttp:\/\/weibo.com\/keleccc\u5df2\u6210\u4e3a\u6d77\u5916\u82e6\u903c\u5b66\u751f\u515a",
+            "level_info": {
+                "current_level": 6,
+                "current_min": 28800,
+                "current_exp": 170500,
+                "next_exp": "-"
+            },
+            "pendant": {
+                "pid": 0,
+                "name": "",
+                "image": "",
+                "expire": 0
+            },
+            "nameplate": {
+                "nid": 48,
+                "name": "2016\u9b3c\u755c\u5927\u8d4fEX\u8363\u8000\u52cb\u7ae0",
+                "image": "http:\/\/i1.hdslb.com\/bfs\/face\/1b6d11f1642160d65b39f223e9dc0df290e5dd57.png",
+                "image_small": "http:\/\/i1.hdslb.com\/bfs\/face\/59fda858933bb1b497a6c6f3c181781359bb9866.png",
+                "level": "\u7a00\u6709\u52cb\u7ae0",
+                "condition": "\u83b7\u5f972016\u9b3c\u755c\u5927\u8d4f\u4eba\u6c14\u5956\u4e0e\u7279\u522b\u5956\u7684UP\u4e3b"
+            },
+            "official_verify": {
+                "type": 0,
+                "desc": "2015\u590f\u591c\u9b3c\u755c\u5927\u8d4f\u7b2c\u4e09\u540d"
+            },
+            "vip": {
+                "vipType": 1,
+                "vipDueDate": 1501171200000,
+                "dueRemark": "",
+                "accessStatus": 1,
+                "vipStatus": 0,
+                "vipStatusWarn": ""
+            }
+        },
+        "space": {
+            "s_img": "http:\/\/i2.hdslb.com\/bfs\/space\/768cc4fd97618cf589d23c2711a1d1a729f42235.png",
+            "l_img": "http:\/\/i2.hdslb.com\/bfs\/space\/cb1c3ef50e22b6096fde67febe863494caefebad.png"
+        }
+    },
+    "message": "0",
+    "ttl": 1
+});
+
+#当前视频的标签信息
+https://api.bilibili.com/x/tag/archive/tags?callback=jQuery17209020020703873045_1510838710588&aid=16341411&jsonp=jsonp&_=1510838711352 :
+https://api.bilibili.com/x/tag/archive/tags?aid=视频AV号'
+jQuery17209020020703873045_1510838710588({
+    "code": 0,
+    "data": [
+        {
+            "tag_id": 71875,
+            "tag_name": "汪峰",
+            "cover": "http://i0.hdslb.com/bfs/tag/976049616f245edf3f0749764343ed904f3e994f.jpg",
+            "content": "汪峰，内地著名音乐人，中国新摇滚乐的代表人物之一。鲍家街43号乐队发起人，自幼接受专业音乐教育。汪峰本人具有较强的歌曲创造能力，被称为“音乐才子”。曾多次荣获国内各大音乐颁奖典礼的最佳男歌手、最佳制作人大奖。其音乐风格独特，歌曲较为关注人的理想与现实世界的困惑。《飞得更高》《怒放的生命》《春天里》《再见青春》等作品广为传唱。2013年央视蛇年春晚正式加盟并演唱《我爱你中国》。耗费巨资，筹备已久，横跨中国15个城市的2013“存在”超级巡回演唱会于2013年4月13日在天津启动。2013年6月加盟《中国好声音》第二季担任导师（与庾澄庆、那英、张惠妹）。",
+            "type": 3,
+            "state": 0,
+            "ctime": 1436866637,
+            "count": {
+                "view": 0,
+                "use": 752,
+                "atten": 28
+            },
+            "is_atten": 0,
+            "likes": 2,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        },
+        {
+            "tag_id": 588,
+            "tag_name": "兄贵",
+            "cover": "http://i0.hdslb.com/bfs/tag/3995fcddf394d2250417600ccf82e8350c8150f2.jpg",
+            "content": "搞基，不等于兄贵。除了有比一般男性肌肉发达外，还必须具备主观上对同性菊花有兴趣或者一定程度上的基情才能称之为兄贵。 当兄贵这个概念传到中国时，便以为只要是肌肉男便冠以兄贵的称呼。事实上，兄贵这一称呼在nico上绝大多数是称呼比利海灵顿的。而ガチムチ则形容摔跤系列的人们的身材，大意是指在肌肉上有一定的脂肪的身材。现在因为某镇站视频而统一音译成噶七姆七。",
+            "type": 3,
+            "state": 0,
+            "ctime": 1436866637,
+            "count": {
+                "view": 0,
+                "use": 16284,
+                "atten": 96406
+            },
+            "is_atten": 0,
+            "likes": 1,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        },
+        {
+            "tag_id": 589,
+            "tag_name": "哲学",
+            "cover": "http://i0.hdslb.com/bfs/tag/fdc6d3c5066ba6bc0f88a411b703d2980cc72b03.jpg",
+            "content": "兄贵文化的代表性理念之一.最初来源是因为比利的摔跤视频中常常会有各种不明所里的行为和叫声,总是能引发起观众剧烈的思考: \u0026quot;他们为什么要摔跤!?\u0026quot;\u0026quot;他们为什么要***!?\u0026quot;\u0026quot;为什么要打跟斗!?\u0026quot;\u0026quot;为什么我要看这个视频!?\u0026quot;\r\n随着观众的思考越来越深入,其思考的问题甚至会上升到哲学的地步,所以称为哲♂学.\r\n而兄贵文化发展到现在,哲学这一词汇的含义也在不断发展.在近代日常用语中,哲学可分为名词和形容词.",
+            "type": 3,
+            "state": 0,
+            "ctime": 1436866637,
+            "count": {
+                "view": 0,
+                "use": 18843,
+                "atten": 52126
+            },
+            "is_atten": 0,
+            "likes": 1,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        },
+        {
+            "tag_id": 976,
+            "tag_name": "励志",
+            "cover": "",
+            "content": "",
+            "type": 3,
+            "state": 0,
+            "ctime": 1436866637,
+            "count": {
+                "view": 0,
+                "use": 15604,
+                "atten": 44555
+            },
+            "is_atten": 0,
+            "likes": 1,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        },
+        {
+            "tag_id": 103742,
+            "tag_name": "怒放的生命",
+            "cover": "http://static.hdslb.com/images/transparent.gif",
+            "content": "",
+            "type": 0,
+            "state": 0,
+            "ctime": 1436866637,
+            "count": {
+                "view": 0,
+                "use": 47,
+                "atten": 0
+            },
+            "is_atten": 0,
+            "likes": 1,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        },
+        {
+            "tag_id": 2727919,
+            "tag_name": "可樂C",
+            "cover": "",
+            "content": "",
+            "type": 0,
+            "state": 0,
+            "ctime": 1476609301,
+            "count": {
+                "view": 0,
+                "use": 21,
+                "atten": 12
+            },
+            "is_atten": 0,
+            "likes": 1,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        },
+        {
+            "tag_id": 497221,
+            "tag_name": "鬼畜调教",
+            "cover": "http://static.hdslb.com/images/transparent.gif",
+            "content": "",
+            "type": 3,
+            "state": 0,
+            "ctime": 1436866637,
+            "count": {
+                "view": 0,
+                "use": 58746,
+                "atten": 73449
+            },
+            "is_atten": 0,
+            "likes": 0,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        },
+        {
+            "tag_id": 9679,
+            "tag_name": "励志向",
+            "cover": "http://static.hdslb.com/images/transparent.gif",
+            "content": "",
+            "type": 0,
+            "state": 0,
+            "ctime": 1436866637,
+            "count": {
+                "view": 0,
+                "use": 1494,
+                "atten": 248
+            },
+            "is_atten": 0,
+            "likes": 0,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        },
+        {
+            "tag_id": 5295120,
+            "tag_name": "van♂峰",
+            "cover": "",
+            "content": "",
+            "type": 0,
+            "state": 0,
+            "ctime": 1510831125,
+            "count": {
+                "view": 0,
+                "use": 1,
+                "atten": 0
+            },
+            "is_atten": 0,
+            "likes": 0,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        },
+        {
+            "tag_id": 5295152,
+            "tag_name": "刘dark♂华",
+            "cover": "",
+            "content": "",
+            "type": 0,
+            "state": 0,
+            "ctime": 1510831303,
+            "count": {
+                "view": 0,
+                "use": 1,
+                "atten": 0
+            },
+            "is_atten": 0,
+            "likes": 0,
+            "hates": 0,
+            "attribute": 0,
+            "liked": 0,
+            "hated": 0
+        }
+    ],
+    "message": "0",
+    "ttl": 1
+})
+
+#给up主充电的用户信息
+https: //api.bilibili.com/x/web-interface/elec/show?callback=jQuery17209020020703873045_1510838710589&jsonp=jsonp&aid=16341411&mid=592761&_=1510838711355 :
+jQuery17209020020703873045_1510838710589({
+    "code": 0,
+    "data": {
+        "show_info": {
+            "show": true,
+            "state": 0
+        },
+        "av_count": 5,
+        "count": 7,
+        "total_count": 385,
+        "special_day": 0,
+        "display_num": 0,
+        "av_list": [
+            {
+                "mid": 592761,
+                "pay_mid": 740839,
+                "rank": 1,
+                "uname": "Saxon青春战争台",
+                "avatar": "http://i2.hdslb.com/bfs/face/56efdfc8e287a4eec1e935b360532ecb50d211d4.jpg",
+                "message": "老哥，加油！！！",
+                "msg_deleted": 0,
+                "vip_info": {
+                    "vipType": 2,
+                    "vipStatus": 1
+                },
+                "trend_type": 0
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 9365966,
+                "rank": 2,
+                "uname": "猹尾x",
+                "avatar": "http://i1.hdslb.com/bfs/face/3fab836b017e236bb61a37e87ea2afff61b5144e.jpg",
+                "vip_info": {
+                    "vipType": 1,
+                    "vipDueMsec": 22946560546,
+                    "vipStatus": 0
+                },
+                "trend_type": 1
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 6770849,
+                "rank": 3,
+                "uname": "诶诶诶666",
+                "avatar": "http://i2.hdslb.com/bfs/face/6e61394fa779d252cd57e56aeac7baadfa280ad8.jpg",
+                "message": "很棒很洗胃",
+                "msg_deleted": 0,
+                "vip_info": {
+                    "vipType": 1,
+                    "vipStatus": 1
+                },
+                "trend_type": 1
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 37769225,
+                "rank": 4,
+                "uname": "韩孟轩",
+                "avatar": "http://i2.hdslb.com/bfs/face/03f61ce082bca0afa312b62412a307898da57a31.jpg",
+                "vip_info": {
+                    "vipType": 0,
+                    "vipStatus": 0
+                },
+                "trend_type": 1
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 4460738,
+                "rank": 5,
+                "uname": "CallMeUnicorn",
+                "avatar": "http://i0.hdslb.com/bfs/face/a2ffbbca1d3f6bb2107e461d0d05a4237895da63.jpg",
+                "vip_info": {
+                    "vipType": 1,
+                    "vipStatus": 1
+                },
+                "trend_type": 1
+            }
+        ],
+        "list": [
+            {
+                "mid": 592761,
+                "pay_mid": 740839,
+                "rank": 1,
+                "uname": "Saxon青春战争台",
+                "avatar": "http://i2.hdslb.com/bfs/face/56efdfc8e287a4eec1e935b360532ecb50d211d4.jpg",
+                "message": "老哥，加油！！！",
+                "msg_deleted": 0,
+                "vip_info": {
+                    "vipType": 2,
+                    "vipStatus": 1
+                },
+                "trend_type": 1
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 9365966,
+                "rank": 2,
+                "uname": "猹尾x",
+                "avatar": "http://i1.hdslb.com/bfs/face/3fab836b017e236bb61a37e87ea2afff61b5144e.jpg",
+                "vip_info": {
+                    "vipType": 1,
+                    "vipDueMsec": 22946560546,
+                    "vipStatus": 0
+                },
+                "trend_type": 1
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 6770849,
+                "rank": 3,
+                "uname": "诶诶诶666",
+                "avatar": "http://i2.hdslb.com/bfs/face/6e61394fa779d252cd57e56aeac7baadfa280ad8.jpg",
+                "message": "很棒很洗胃",
+                "msg_deleted": 0,
+                "vip_info": {
+                    "vipType": 1,
+                    "vipStatus": 1
+                },
+                "trend_type": 1
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 37769225,
+                "rank": 4,
+                "uname": "韩孟轩",
+                "avatar": "http://i2.hdslb.com/bfs/face/03f61ce082bca0afa312b62412a307898da57a31.jpg",
+                "vip_info": {
+                    "vipType": 0,
+                    "vipStatus": 0
+                },
+                "trend_type": 1
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 4460738,
+                "rank": 5,
+                "uname": "CallMeUnicorn",
+                "avatar": "http://i0.hdslb.com/bfs/face/a2ffbbca1d3f6bb2107e461d0d05a4237895da63.jpg",
+                "vip_info": {
+                    "vipType": 1,
+                    "vipStatus": 1
+                },
+                "trend_type": 1
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 149196830,
+                "rank": 6,
+                "uname": "明明c丶",
+                "avatar": "http://i0.hdslb.com/bfs/face/32a6c9ecb582103270dfc291975b1b32180d09ed.jpg",
+                "vip_info": {
+                    "vipType": 1,
+                    "vipStatus": 1
+                },
+                "trend_type": 1
+            },
+            {
+                "mid": 592761,
+                "pay_mid": 11723180,
+                "rank": 7,
+                "uname": "绍煜的烧鱼",
+                "avatar": "http://i0.hdslb.com/bfs/face/ca26591baa3bc9f03e9cff49567dce422d1e4b7c.jpg",
+                "vip_info": {
+                    "vipType": 0,
+                    "vipStatus": 0
+                },
+                "trend_type": 0
+            }
+        ]
+    },
+    "message": "0",
+    "ttl": 1
+})
+
+#视频的关键信息，收藏等等
+https: //api.bilibili.com/x/web-interface/archive/stat?callback=jQuery17209020020703873045_1510838710590&aid=16341411&jsonp=jsonp&_=1510838711356 :
+jQuery17209020020703873045_1510838710590({
+    "code": 0,
+    "data": {
+        "aid": 16341411,
+        "view": 112850,
+        "danmaku": 982,
+        "reply": 982,
+        "favorite": 6885,
+        "coin": 15230,
+        "share": 1965,
+        "now_rank": 0,
+        "his_rank": 0,
+        "no_reprint": 1,
+        "copyright": 1
+    },
+    "message": "0",
+    "ttl": 1
+})
