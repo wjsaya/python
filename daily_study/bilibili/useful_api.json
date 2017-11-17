@@ -3,7 +3,7 @@ callback
 
 #up主信息
 # https://api.bilibili.com/cardrich?&callback=jQuery17209020020703873045_1510838710587&mid=592761&type=jsonp&_=1510838711344
-# https://api.bilibili.com/cardrich?mid=592761'
+# https://api.bilibili.com/cardrich?mid=592761
 # https://api.bilibili.com/cardrich?mid=up主的id':
 jQuery17209020020703873045_1510838710587({
     "code": 0,
