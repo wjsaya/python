@@ -3,7 +3,7 @@
 
 import pymysql
 
-conn = pymysql.connect(host='localhost',port=3306,user='pyroot',password='123456qwe')
+conn = pymysql.connect(host='localhost',port=3306,user='pylocal',password='123456')
 
 conn.query("drop database test")
 conn.query("create database test")
