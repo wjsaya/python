@@ -4,59 +4,61 @@ import pymysql
 import time
 
 def db_init(u_sql, p_sql):
-    conn = pymysql.connect(host='localhost',port=3306,user=u_sql,password=p_sql)
+    conn = pymysql.connect(host='localhost',port=3306,user=u_sql,password=p_sql, charset="utf8")
     conn.query('create database if not exists bilibili')
     conn.query('use bilibili')
-    conn.query('create table if not exists up_info (mid varchar(20),name varchar(200),sex varchar(20),regtime int,birthday varchar(200),place varchar(20),description varchar(200),fans int,attention int,sign varchar(200),level int,vipStatus int,article int,nameplant_name varchar(200),nameplant_level varchar(200),nameplant_condition varchar(200),official_type int,official_verify varchar(200));')
-    conn.query('create table  if not exists up_relation (mid int, attentions int);')
+    conn.query('create table if not exists up_info (mid int NOT NULL PRIMARY KEY,name varchar(200),sex varchar(20),regtime int,birthday varchar(200),place varchar(20),description varchar(200),fans int,attention int,sign varchar(200),level int,vipStatus int,article int,nameplant_name varchar(200),nameplant_level varchar(200),nameplant_condition varchar(200),official_type int,official_verify varchar(200));')
+    conn.query('create table  if not exists up_relation (mid int, attention int);')
+    conn.query('create table  if not exists up_waiting (no int AUTO_INCREMENT PRIMARY KEY , mid int NOT NULL);')
     conn.close()
 
-def insert_into_up_info(u_sql, p_sql, json):
-    mid = json['data']['card']['mid']
-    name = json['data']['card']['name']
-    sex = json['data']['card']['sex']
-    regtime = json['data']['card']['regtime']
-    birthday = json['data']['card']['birthday']
-    place = json['data']['card']['place']
-    description = json['data']['card']['description']
-    fans = json['data']['card']['fans']
-    attention = json['data']['card']['attention']
-    sign = json['data']['card']['sign']
-    level_info_current_level = json['data']['card']['level_info']['current_level']
-    vipStatus = json['data']['card']['vip']['vipStatus']
-    article = json['data']['card']['article']
-    nameplate_name = json['data']['card']['nameplate']['name']
-    nameplate_level = json['data']['card']['nameplate']['level']
-    condition = json['data']['card']['nameplate']['condition']
-    official_verify_type = json['data']['card']['official_verify']['type']
-    official_verify_desc = json['data']['card']['official_verify']['desc']
-    print("%s"+str(type(mid)))
-    print("%s"+str(type(name)))
-    print("%s"+str(type(sex)))
-    print("%d"+str(type(regtime)))
-    print("%s"+str(type(birthday)))
-    print("%s"+str(type(place)))
-    print("%s"+str(type(description)))
-    print("%d"+str(type(fans)))
-    print("%d"+str(type(attention)))
-    print("%s"+str(type(sign)))
-    print("%d"+str(type(level_info_current_level)))
-    print("%d"+str(type(nameplate_name)))
-    print("%d"+str(type(nameplate_level)))
-    print("%s"+str(type(vipStatus)))
-    print("%s"+str(type(article)))
-    print("%s"+str(type(condition)))
-    print("%d"+str(type(official_verify_type)))
-    print("%s"+str(type(official_verify_desc)))
-#其中四条顺序反了，nameplant_name附近
+def insert_into_up_info(u_sql, p_sql, data):
+    mid = data['mid']
+    name = "'"+data['name']+"'"
+    sex = "'"+data['sex']+"'"
+    regtime = data['regtime']
+    birthday = "'"+data['birthday']+"'"
+    place = "'"+data['place']+"'"
+    description = "'"+data['description']+"'"
+    fans = data['fans']
+    attention = data['attention']
+    sign = "'"+data['sign']+"'"
+    level_info_current_level = data['level_info']['current_level']
+    vipStatus = data['vip']['vipStatus']
+    article = data['article']
+    nameplate_name = "'"+data['nameplate']['name']+"'"
+    nameplate_level = "'"+data['nameplate']['level']+"'"
+    nameplant_condition = "'"+data['nameplate']['condition']+"'"
+    official_verify_type = data['official_verify']['type']
+    official_verify_desc = "'"+data['official_verify']['desc']+"'"
+    r_list = data['attentions']
 
-
-    conn = pymysql.connect(host='localhost',port=3306,user=u_sql,password=p_sql, db='bilibili')
+    conn = pymysql.connect(host='localhost',port=3306,user=u_sql,password=p_sql, db='bilibili', charset="utf8")
     row = conn.cursor()
-    sql_update ="insert into up_info values(%s,%s,%s,%d,%s,%s,%s,%d,%d,%s,%d,%d,%d,%s,%s,%s,%d,%s)"
-    row.execute(sql_update % (mid,name,sex,regtime,birthday,place,description,fans,attention,sign,level_info_current_level,nameplate_name,nameplate_level,vipStatus,article,condition,official_verify_type,official_verify_desc))
-
+    insert_into_up_info ="insert into up_info values(%s,%s,%s,%d,%s,%s,%s,%d,%d,%s,%d,%d,%d,%s,%s,%s,%d,%s);"
+    insert_into_relation = "insert into up_relation values(%d,%d);"
+    insert_into_waiting  = "insert into up_waiting values(%d,%d);"
+    get_info_from_up_info = "select * from up_info where mid = %d;"
+ 
+    try:
+        row.execute(insert_into_up_info % (mid,name,sex,regtime,birthday,place,description,fans,attention,sign,level_info_current_level,vipStatus,article,nameplate_name,nameplate_level,nameplant_condition,official_verify_type,official_verify_desc))
+    except Exception as e:
+        print ("此up主已抓取？报错如下：")
+        print (e)
+    for i in r_list:
+        try:
+            row.execute(insert_into_relation % (int(mid),int(i)))
+        except Exception as e:
+            print ("此对应关系已记录？报错如下：")
+            print (e)
+        try:
+            row.execute(get_info_from_up_info % int(i))
+            print ("id为%d的用户已抓取，不用再次入库" % int(i))
+        except Exception as e:
+            row.execute(insert_into_waiting % (int(), int(i)))
+            print ("UPID=%d已加入waiting库，待抓取" % int(i))
+            print (e)
+     
     row.close()
     conn.commit()
     conn.close()
-    
