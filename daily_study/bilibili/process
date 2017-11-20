@@ -1,15 +1,18 @@
 start.py
 
-    起线程，调用start_from_up
-        找一个种子up主，传入up主id(UPID)
+    1  >    初始化数据库（db_init）
 
-        找到当前up所关注的其他up，调用start_from_up
-        入库(bilibili.UPrelation)
-        
-        访问up的空间，找所有av号(AVnum)，入库(bilibili.up)
+    2   >   从up_waiting库获取up主id(get_up_mid)
+    
+    3   >   传入up主id，从api获取信息，解析信息
+                解析基本信息，入库(up_info)
+                
+                --    多线程       --
+                解析关注的其他up主，获取id，与up_info表核对之后入库(up_waiting)
+                --  多线程结束   --
+                
+    4   >   回2
 
-    起线程，调用start_from_av
-        访问AVnum，获取投币，收藏等信息，入库(bilibili.av)
 
 
-
+    
