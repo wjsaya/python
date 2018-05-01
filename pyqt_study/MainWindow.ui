@@ -6,22 +6,25 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1178</width>
-    <height>1040</height>
+    <width>901</width>
+    <height>474</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>图像处理-wjsaya.top</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QTextBrowser" name="infoTextArea">
     <property name="geometry">
      <rect>
-      <x>510</x>
-      <y>540</y>
-      <width>256</width>
-      <height>192</height>
+      <x>620</x>
+      <y>10</y>
+      <width>261</width>
+      <height>291</height>
      </rect>
+    </property>
+    <property name="documentTitle">
+     <string/>
     </property>
     <property name="html">
      <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
@@ -31,16 +34,19 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;显示名	|	objectName&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;原图	|	img_origin&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;预览	|	img_prev&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;打开	|	button_open&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;保存	|	button_save&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;从上到下	|	1,2,3,4,5...&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QWidget" name="horizontalLayoutWidget_2">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>30</y>
-      <width>981</width>
-      <height>481</height>
+      <x>10</x>
+      <y>10</y>
+      <width>601</width>
+      <height>309</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="MainLayout">
@@ -48,19 +54,6 @@ p, li { white-space: pre-wrap; }
       <layout class="QHBoxLayout" name="img_MainLayout" stretch="0">
        <item>
         <layout class="QGridLayout" name="gridLayout" rowstretch="0,0">
-         <item row="0" column="1">
-          <widget class="QLabel" name="text_Prev">
-           <property name="text">
-            <string>预览</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QGraphicsView" name="img_Origin"/>
-         </item>
          <item row="0" column="0">
           <widget class="QLabel" name="text_Origin">
            <property name="contextMenuPolicy">
@@ -74,8 +67,18 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
+         <item row="0" column="1">
+          <widget class="QLabel" name="text_Prev">
+           <property name="text">
+            <string>预览</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="2">
-          <layout class="QGridLayout" name="menu_MainLayout" rowstretch="2,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0">
+          <layout class="QGridLayout" name="menu_MainLayout" rowstretch="2,0,0" columnstretch="0,0">
            <item row="0" column="1">
             <layout class="QHBoxLayout" name="horizontalLayout">
              <item>
@@ -110,56 +113,56 @@ p, li { white-space: pre-wrap; }
            <item row="2" column="1">
             <layout class="QVBoxLayout" name="verticalLayout">
              <item>
-              <widget class="QPushButton" name="pushButton_4">
+              <widget class="QPushButton" name="button_1">
                <property name="text">
                 <string>彩色-&gt;灰度</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_9">
+              <widget class="QPushButton" name="button_2">
                <property name="text">
                 <string>灰度-&gt;二值</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_10">
+              <widget class="QPushButton" name="button_3">
                <property name="text">
                 <string>几何变换</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_7">
+              <widget class="QPushButton" name="button_4">
                <property name="text">
                 <string>去噪</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="button_5">
                <property name="text">
                 <string>PushButton</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_6">
+              <widget class="QPushButton" name="button_6">
                <property name="text">
                 <string>边缘提取(一阶差分)</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_8">
+              <widget class="QPushButton" name="button_7">
                <property name="text">
                 <string>加噪</string>
                </property>
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_5">
+              <widget class="QPushButton" name="button_8">
                <property name="text">
                 <string>退出</string>
                </property>
@@ -169,8 +172,25 @@ p, li { white-space: pre-wrap; }
            </item>
           </layout>
          </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="img_origin">
+           <property name="text">
+            <string>原图</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="1">
-          <widget class="QGraphicsView" name="img_Prev"/>
+          <widget class="QLabel" name="label_3">
+           <property name="text">
+            <string>预览</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -178,13 +198,26 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>340</y>
+      <width>601</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>标记</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1178</width>
+     <width>901</width>
      <height>23</height>
     </rect>
    </property>

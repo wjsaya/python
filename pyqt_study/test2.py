@@ -1,29 +1,43 @@
-# -*- coding: utf-8 -*-
-from PyQt4 import QtGui, QtCore
-from ui_widget import Ui_Form
- 
-class Widget1(QtGui.QWidget, Ui_Form):
-    """QtGui.QWidget和界面设计时选择的类型一致"""
-    def __init__(self, parent=None):
-    QtGui.QWidget.__init__(self, parent)
-    self.setupUi(self) # Ui_Form.setupUi
-    
- 
-class Widget2(QtGui.QWidget, Ui_Form):
-    """QtGui.QWidget和界面设计时选择的类型一致"""
-    def __init__(self, parent=None):
-        QtGui.QWidget.__init__(self, parent)
-        self.setupUi(self) # Ui_Form.setupUi
-    
-    @QtCore.pyqtSignature("")
-    def on_pbHello_clicked(self):
-        """pbHello和界面设计时的objectName一致"""
-        self.lHello.setText('Hello PyQt4') # lHello和界面设计的objectName一致
-        
-        
-if __name__ == '__main__':
-    import sys
-    app = QtGui.QApplication(sys.argv)
-    widget = Widget()
-    widget.show()
-    sys.exit(app.exec_())
+import sys
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+
+class ImageView(QGraphicsView):
+	def __init__(self, parent=None, origPixmap=None):
+		"""
+		QGraphicsView that will show an image scaled to the current widget size
+		using events
+		"""
+		super(ImageView, self).__init__(parent)
+		self.origPixmap = origPixmap
+		QMetaObject.connectSlotsByName(self)
+	
+	def resizeEvent(self, event):
+		"""
+		Handle the resize event.
+		"""
+		size = event.size()
+		item =  self.items()[0]
+		
+		# using current pixmap after n-resizes would get really blurry image
+		#pixmap = item.pixmap()
+		pixmap = self.origPixmap
+		
+		pixmap = pixmap.scaled(size, Qt.KeepAspectRatio, Qt.SmoothTransformation)
+		self.centerOn(1.0, 1.0)
+		item.setPixmap(pixmap)
+
+
+app = QApplication(sys.argv)
+
+pic = QPixmap('./lena.png')
+grview = ImageView(origPixmap=pic)
+
+scene = QGraphicsScene()
+scene.addPixmap(pic)
+
+grview.setScene(scene)
+grview.show()
+
+sys.exit(app.exec_())
