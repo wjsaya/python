@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>984</width>
+    <height>653</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>图像处理-wjsaya.top</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>128</width>
+    <height>128</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="main_centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,8,0,0">
+    <item>
+     <spacer name="verticalSpacer_top">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <widget class="QWidget" name="MainWidget" native="true">
+      <layout class="QHBoxLayout" name="MainLayout" stretch="5">
+       <item>
+        <widget class="QWidget" name="img_MainWidget" native="true">
+         <layout class="QHBoxLayout" name="img_MainLayout" stretch="1,4">
+          <item>
+           <widget class="QWidget" name="widget_thumb" native="true">
+            <layout class="QVBoxLayout" name="layout_thumb" stretch="1,10,10">
+             <item alignment="Qt::AlignHCenter">
+              <widget class="QLabel" name="label_thumb">
+               <property name="text">
+                <string>想放大哪一个?点击就好</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="layout_thumb_origin" stretch="1,9">
+               <item>
+                <widget class="QLabel" name="label_origin">
+                 <property name="text">
+                  <string>原图</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="thumb_origin">
+                 <property name="text">
+                  <string>thumb_origin</string>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="layout_thumb_prev" stretch="1,9">
+               <item>
+                <widget class="QLabel" name="label_prev">
+                 <property name="text">
+                  <string>当前修改</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="thumb_prev">
+                 <property name="text">
+                  <string>thumb_prev</string>
+                 </property>
+                 <property name="scaledContents">
+                  <bool>false</bool>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_big_prev" native="true">
+            <layout class="QVBoxLayout" name="layout_big_prev" stretch="0,20">
+             <item>
+              <widget class="QLabel" name="label_big_prev">
+               <property name="cursor">
+                <cursorShape>OpenHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>当前是什么?</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QScrollArea" name="scrollArea_prev">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scroolWidget_big_prev">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>719</width>
+                  <height>342</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <widget class="QLabel" name="big_prev">
+                   <property name="cursor">
+                    <cursorShape>OpenHandCursor</cursorShape>
+                   </property>
+                   <property name="text">
+                    <string>big_prev</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="JHBH_widget" native="true">
+      <layout class="QHBoxLayout" name="layout_PY" stretch="0,0,0,0,0,0,0,0,3">
+       <item>
+        <layout class="QHBoxLayout" name="layout_PY_2">
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_V">
+           <property name="text">
+            <string>垂直平移</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_PY_V">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_S">
+           <property name="text">
+            <string>水平平移</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_PY_S">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="widget_JX" native="true">
+         <layout class="QHBoxLayout" name="layout_JX">
+          <item>
+           <widget class="QPushButton" name="JX_s">
+            <property name="text">
+             <string>垂直镜像</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="JX_v">
+            <property name="text">
+             <string>水平镜像</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="layout_XZ">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>旋转</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="slider_XZ">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="Line" name="line_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_SF">
+         <property name="text">
+          <string>缩放请使用ctrl+鼠标滚轮</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer_bottom">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="main_menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>984</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_file">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="action_open"/>
+    <addaction name="action_save"/>
+    <addaction name="action_quit"/>
+   </widget>
+   <widget class="QMenu" name="title_about">
+    <property name="title">
+     <string>关于</string>
+    </property>
+    <addaction name="action_about"/>
+   </widget>
+   <widget class="QMenu" name="menu_edit">
+    <property name="title">
+     <string>编辑</string>
+    </property>
+    <addaction name="action_2gray"/>
+    <addaction name="action_2binary"/>
+   </widget>
+   <widget class="QMenu" name="menu_noise_fliter">
+    <property name="title">
+     <string>加噪去噪</string>
+    </property>
+    <addaction name="action_salt_noise"/>
+    <addaction name="action_gaussian_noise"/>
+    <addaction name="separator"/>
+    <addaction name="action_mean_filter"/>
+    <addaction name="action_median_filter"/>
+    <addaction name="action_gauss_fliter"/>
+    <addaction name="separator"/>
+    <addaction name="action_noisy_menu"/>
+   </widget>
+   <widget class="QMenu" name="menu_gray_enhance">
+    <property name="title">
+     <string>	灰度图像增强
+</string>
+    </property>
+    <addaction name="action_linear"/>
+    <addaction name="action_power"/>
+    <addaction name="action_hdzft"/>
+    <addaction name="separator"/>
+    <addaction name="action_gray_enhance_menu"/>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>边缘提取</string>
+    </property>
+    <addaction name="action_6"/>
+    <addaction name="action_7"/>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>几何变换</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>自己实现的函数</string>
+    </property>
+    <addaction name="action_own_2gray"/>
+    <addaction name="action_own_2binary"/>
+   </widget>
+   <addaction name="menu_file"/>
+   <addaction name="menu_edit"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_noise_fliter"/>
+   <addaction name="menu_gray_enhance"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu"/>
+   <addaction name="title_about"/>
+  </widget>
+  <widget class="QStatusBar" name="main_statusbar"/>
+  <action name="actioninfo">
+   <property name="text">
+    <string>info</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="text">
+    <string>关于我们</string>
+   </property>
+  </action>
+  <action name="action_quit">
+   <property name="text">
+    <string>退出程序</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="action_open">
+   <property name="text">
+    <string>打开图片</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="action_save">
+   <property name="text">
+    <string>保存图片</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="action_mean_filter">
+   <property name="text">
+    <string>均值滤波
+</string>
+   </property>
+  </action>
+  <action name="action_gauss_fliter">
+   <property name="text">
+    <string>高斯滤波
+</string>
+   </property>
+  </action>
+  <action name="action_median_filter">
+   <property name="text">
+    <string>中值滤波
+(椒盐)</string>
+   </property>
+  </action>
+  <action name="action_linear">
+   <property name="text">
+    <string>线性变换
+</string>
+   </property>
+  </action>
+  <action name="action_power">
+   <property name="text">
+    <string>幂变换
+</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>一阶差分</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>二阶差分</string>
+   </property>
+  </action>
+  <action name="action_2gray">
+   <property name="text">
+    <string>转为灰度图</string>
+   </property>
+  </action>
+  <action name="action_2binary">
+   <property name="text">
+    <string>转为二值图</string>
+   </property>
+  </action>
+  <action name="action_color_reverse">
+   <property name="text">
+    <string>颜色反转</string>
+   </property>
+  </action>
+  <action name="action_gaussian_noise">
+   <property name="text">
+    <string>高斯噪声</string>
+   </property>
+  </action>
+  <action name="action_salt_noise">
+   <property name="text">
+    <string>椒盐噪声(default:0.01)</string>
+   </property>
+  </action>
+  <action name="action_own_2gray">
+   <property name="text">
+    <string>转灰度图</string>
+   </property>
+  </action>
+  <action name="action_own_2binary">
+   <property name="text">
+    <string>转二值图</string>
+   </property>
+  </action>
+  <action name="action_noisy_menu">
+   <property name="text">
+    <string>加噪去噪控制面板
+</string>
+   </property>
+  </action>
+  <action name="action_gray_enhance_menu">
+   <property name="text">
+    <string>灰度增强控制面板
+</string>
+   </property>
+  </action>
+  <action name="action_hdzft">
+   <property name="text">
+    <string>灰度直方图</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
