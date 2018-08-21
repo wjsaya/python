@@ -51,6 +51,7 @@ def get_big_pic(url):
     rsp = requests.get(fileUrl, headers=head).content
     with open (fileName, 'wb') as f:
         f.write(rsp)
+    print(fileName + "下载完毕")
     
 
 def createDir(dirName):
@@ -65,7 +66,6 @@ def createDir(dirName):
             fileName =  ".\\" + dirName + "\\" + i 
             os.remove(fileName)
 
-
-main()
-
+if __name__ == '__main__':
+    main()
 
